@@ -1,3 +1,7 @@
-*.csv
+params.csv
+filtro.csv
+filtro1.csv
+pozos1.csv
+pozos.csv
 *.xlsx
 .ipynb_checkpoints/
