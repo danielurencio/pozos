@@ -32,19 +32,39 @@ data = data.sort_values(by="periodo")
 # periodos = np.unique(data.periodo.values);
 # [pozos[i],(len(data[data['pozo'] == pozos[i]][[7]]))]
 
-def NuevaTabla():
+def NuevaTabla(archivo):
     nuevaTabla = [];
     print "Calculando...";
     for i in range(len(pozos)):
-        #a = Reg(pozos[i],7);
-        #a.Parametros();
         nuevaTabla.append( [pozos[i], len( data[data['pozo'] == pozos[i]][[7]] )] );
 
     nuevaTabla = np.array(nuevaTabla);
-    nuevaTabla = pandas.DataFrame({ 'pozos':nuevaTabla[:,0], 'observaciones':nuevaTabla[:,1] })#, "pendientes":nuevaTabla[:,2], 'R_2':nuevaTabla[:,3] });
-#    nuevaTabla = nuevaTabla[nuevaTabla['observaciones'] >= limite]
+    nuevaTabla = pandas.DataFrame({ 'pozos':nuevaTabla[:,0], 'observaciones':nuevaTabla[:,1] })
     print "Se ha obtenido la nueva tabla..";
+    if(archivo):
+        nuevaTabla.to_csv("frecuencias.csv",encoding="utf-8",index=False);
+        print "Archivo con frecuencias guardado.";
     return nuevaTabla;
+
+
+# pozos = pandas.read_csv("frecuencas.csv")
+# pozos = pozos[pozos["observaciones"] == 14]
+# pozos = pozos.values[:,1].tolist()
+
+def Parametros(pozos):
+    tabla = []
+    for i in range(len(pozos)):
+        a = Reg(pozos[i],7)
+        a.Parametros();
+        b = [pozos[i], a.slope, a.R_2]
+        tabla.append(b)
+        print pozos[i],a.slope,a.R_2
+
+    tabla = np.array(tabla);
+    tabla = pandas.DataFrame({ 'pozos':tabla[:,0],'slopes':tabla[:,1],'R2':tabla[:,2] })
+    return tabla;
+
+#a.plot.densitiy();
 
 
 class Reg(object):
