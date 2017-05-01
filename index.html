@@ -11753,23 +11753,139 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Pr&#225;ctica:-Exploraci&#243;n-de-pozos">Pr&#225;ctica: Exploraci&#243;n de pozos<a class="anchor-link" href="#Pr&#225;ctica:-Exploraci&#243;n-de-pozos">&#182;</a></h1><p>El objetivo de este ejercicio es el de, a través de la exploración de una base de datos, determinar en qué pozos deben de enfocarse la atención.</p>
+<h1 id="Pr&#225;ctica:-An&#225;lisis-de-datos-para-la-exploraci&#243;n-de-pozos">Pr&#225;ctica: An&#225;lisis de datos para la exploraci&#243;n de pozos<a class="anchor-link" href="#Pr&#225;ctica:-An&#225;lisis-de-datos-para-la-exploraci&#243;n-de-pozos">&#182;</a></h1><h2 id="Resumen">Resumen<a class="anchor-link" href="#Resumen">&#182;</a></h2><p>El objetivo de este ejercicio es, a través de un análisis de datos, determinar en qué pozos debe de enfocarse la atención para la extracción de petróleo.</p>
+<p>La metodología adoptada en este análisis consiste en analizar la serie de tiempo para cada uno de los pozos con datos para 14 meses. Es decir, sólo se tomará en cuenta aquellos pozos para los cuales existe información para el periodo comprendido entre enero de 2016 y febrero de 2017, ya que dicho rango es el máximo posible de acuerdo con la base de datos que fue proporcionada.</p>
+<p>Para cada uno de los pozos que cumplió con el criterio anterior se ajustó una regresión lineal cuya variable dependiente $y$ es la producción de petróleo, y la variable independiente $x$ es el índice del periodo observado. Debido a que se cuenta con 14 meses, el índice de cada periodo es un número entero entre 0 y 13 ( $x$ E [0,14]). Cada una de estas regresiones se ajustó para fines meramente descriptivos, pues su propósito es obtener una línea de tendencia durante los 14 periodos analizados. Para conocer si la tendencia es positiva o negativa se observó el valor de la pendiente resultante del cómputo de una función lineal a través del método de mínimos cuadrados ordinarios; para conocer si dicha tendencia, o comportamiento, ha sido estable a lo largo del periodo analizado se observó el coeficiente de determinación, o $R^2$ ($R^2$ e (0,1)).</p>
+<p>Los pozos seleccionados fueron aquellos cuya línea de tendencia fue positiva y con una bondad de ajuste por arriba del 60 por ciento.</p>
+<h2 id="Introducci&#243;n">Introducci&#243;n<a class="anchor-link" href="#Introducci&#243;n">&#182;</a></h2><p>Esta práctica se desarrolló con el lenguaje de programación Python y este documento se hizo con una herramienta llamada Jupyter.</p>
+<p>Este trabajo está dividido en "n" secciones...</p>
+<p>Los archivos con los cuales se hizo este análisis se encuentran albergados en un repositorio público en Github. Éste puede descargarse accediendo a la siguiente liga: <a href="https://github.com/danielurencio/pozos">https://github.com/danielurencio/pozos</a>.</p>
 <p>$x = a + b*x$</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Preprocesamiento-de-datos">Preprocesamiento de datos<a class="anchor-link" href="#Preprocesamiento-de-datos">&#182;</a></h2><h3 id="Transformaci&#243;n-de-formato">Transformaci&#243;n de formato<a class="anchor-link" href="#Transformaci&#243;n-de-formato">&#182;</a></h3><p>Para llevar a cabo este análisis se obtuvo un archivo en formato Excel (xlsx) el cual contiene 138 mil 876 filas y 13 columnas. Antes de cargar la información a una terminal de línea de comando de Python se transformó el archivo original a un formato delimitado por comas (csv). Posteriormente, se eliminaron las primeras 8 líneas de dicha transformación y se sustituyeron algunos caracteres para evitar problemas al interpretar algunos caracteres latinos.</p>
+<p>Se creó, por lo tanto, un archivo para ser ejecutado con UNIX Shell, éste contiene 14 líneas. En términos generales, los comandos de este archivo, que se enlistan a continuación, crean y modifican el archivo delimitado por comas (pozos.csv) que será utilizado en Python para llevar a cabo todo el análisis.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[28]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># xlsx2csv P*.xlsx &gt; pozos.csv    # Convertir a CSV.</span>
+<span class="c1"># sed -i &#39;1,8d&#39; pozos.csv         # Eliminar las primeras ocho líneas.</span>
+<span class="c1"># sed -i &quot;s/  */ /g&quot; pozos.csv    # Borrar dobles espacios.</span>
+<span class="c1"># sed -i &quot;s/Á/A/g&quot; pozos.csv</span>
+<span class="c1"># sed -i &quot;s/á/a/g&quot; pozos.csv</span>
+<span class="c1"># sed -i &quot;s/É/E/g&quot; pozos.csv</span>
+<span class="c1"># sed -i &quot;s/é/e/g&quot; pozos.csv</span>
+<span class="c1"># sed -i &quot;s/Í/I/g&quot; pozos.csv</span>
+<span class="c1"># sed -i &quot;s/í/i/g&quot; pozos.csv</span>
+<span class="c1"># sed -i &quot;s/Ó/O/g&quot; pozos.csv</span>
+<span class="c1"># sed -i &quot;s/ó/o/g&quot; pozos.csv</span>
+<span class="c1"># sed -i &quot;s/Ú/U/g&quot; pozos.csv</span>
+<span class="c1"># sed -i &quot;s/Ñ/N/g&quot; pozos.csv</span>
+<span class="c1"># sed -i &quot;s/ñ/n/g&quot; pozos.csv</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Dependencias-y-procesamiento-adicional-en-Python">Dependencias y procesamiento adicional en Python<a class="anchor-link" href="#Dependencias-y-procesamiento-adicional-en-Python">&#182;</a></h3><p>Las dependencias que se utilizaron para este análisis se enlistan a continuación. (Todas las líneas que se muestran abajo, con excepción de la primera, se encuentran en el archivo original del repositorio. El comando "%matplotlib inline" se incluye para poder visualizar gráficas dentro de este documento; dicho comando es, por lo tanto, una funcionalidad exclusiva de Jupyter).</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[29]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
 <span class="kn">import</span> <span class="nn">pandas</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
+</pre></div>
 
-<span class="n">a</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;params.csv&quot;</span><span class="p">)</span>
-<span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Una vez que se cuenta con las dependencias es posible cargar el archivo "pozos.csv". Para ello se utilizará la librería "Pandas" y se declarará una variable con nombre "data" para almacenar en ésta la información del archivo. Asimismo, se cambiará el nombre de todas las columnas para evitar problemas con caracteres latinos (principalmente con palabras acentuadas).</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Para conocer el número de pozos puede hacerse lo siguiente.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[30]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="c1">## Crear DataFrame con los datos sobre pozos.</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;pozos.csv&quot;</span><span class="p">,</span><span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">,</span><span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">);</span>
+
+<span class="c1">## Renombrar columnas.</span>
+<span class="n">data</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;periodo&quot;</span><span class="p">,</span><span class="s2">&quot;asignacion&quot;</span><span class="p">,</span><span class="s2">&quot;region_fiscal&quot;</span><span class="p">,</span><span class="s2">&quot;campo_oficial&quot;</span><span class="p">,</span><span class="s2">&quot;pozo&quot;</span><span class="p">,</span><span class="s2">&quot;ronda_licitacion&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;compania&quot;</span><span class="p">,</span><span class="s2">&quot;produccion_petroleo(mbd)&quot;</span><span class="p">,</span><span class="s2">&quot;produccion_gas_asociado(mmpcd)&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;produccion_gas_no_asociado(mmpcd)&quot;</span><span class="p">,</span><span class="s2">&quot;produccion_total_de_gas(mmpcd)&quot;</span><span class="p">,</span><span class="s2">&quot;tipo_de_aceite&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;pozo_productor&quot;</span><span class="p">];</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Ahora que la información del archivo se encuentra en la línea de comando es posible visualizar ésta como una tabla (DataFrame).</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[31]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 
 </div>
@@ -11780,11 +11896,113 @@ div#notebook {
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[9]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[31]:</div>
 
-
-<div class="output_text output_subarea output_execute_result">
-<pre>7321</pre>
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>periodo</th>
+      <th>asignacion</th>
+      <th>region_fiscal</th>
+      <th>campo_oficial</th>
+      <th>pozo</th>
+      <th>ronda_licitacion</th>
+      <th>compania</th>
+      <th>produccion_petroleo(mbd)</th>
+      <th>produccion_gas_asociado(mmpcd)</th>
+      <th>produccion_gas_no_asociado(mmpcd)</th>
+      <th>produccion_total_de_gas(mmpcd)</th>
+      <th>tipo_de_aceite</th>
+      <th>pozo_productor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Jan-16</td>
+      <td>A-0001 - Campo Abkatun</td>
+      <td>Aguas Someras</td>
+      <td>Abkatun</td>
+      <td>ABKATUN-211--</td>
+      <td>R0</td>
+      <td>Pemex</td>
+      <td>0.756978</td>
+      <td>1.923678</td>
+      <td>0.0</td>
+      <td>1.923678</td>
+      <td>Ligero</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Jan-16</td>
+      <td>A-0001 - Campo Abkatun</td>
+      <td>Aguas Someras</td>
+      <td>Abkatun</td>
+      <td>ABKATUN-216--</td>
+      <td>R0</td>
+      <td>Pemex</td>
+      <td>0.073139</td>
+      <td>0.051653</td>
+      <td>0.0</td>
+      <td>0.051653</td>
+      <td>Ligero</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Jan-16</td>
+      <td>A-0001 - Campo Abkatun</td>
+      <td>Aguas Someras</td>
+      <td>Abkatun</td>
+      <td>ABKATUN-221--</td>
+      <td>R0</td>
+      <td>Pemex</td>
+      <td>0.584042</td>
+      <td>1.137749</td>
+      <td>0.0</td>
+      <td>1.137749</td>
+      <td>Ligero</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Jan-16</td>
+      <td>A-0001 - Campo Abkatun</td>
+      <td>Aguas Someras</td>
+      <td>Abkatun</td>
+      <td>ABKATUN-223--</td>
+      <td>R0</td>
+      <td>Pemex</td>
+      <td>0.209442</td>
+      <td>1.044266</td>
+      <td>0.0</td>
+      <td>1.044266</td>
+      <td>Ligero</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Jan-16</td>
+      <td>A-0001 - Campo Abkatun</td>
+      <td>Aguas Someras</td>
+      <td>Abkatun</td>
+      <td>ABKATUN-35--</td>
+      <td>R0</td>
+      <td>Pemex</td>
+      <td>1.003177</td>
+      <td>1.054900</td>
+      <td>0.0</td>
+      <td>1.054900</td>
+      <td>Ligero</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div>
 </div>
 
 </div>
@@ -11795,10 +12013,13 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[32]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="n">a</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">density</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="c1">## Pozos (sin repetir valores) </span>
+<span class="n">pozos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">pozo</span><span class="o">.</span><span class="n">values</span><span class="p">);</span>
+<span class="k">print</span> <span class="nb">len</span><span class="p">(</span><span class="n">pozos</span><span class="p">)</span>
+<span class="k">print</span> <span class="n">pozos</span>
 </pre></div>
 
 </div>
@@ -11810,217 +12031,106 @@ div#notebook {
 
 
 <div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>11646
+[u&#39;5 PRESIDENTES-12--&#39; u&#39;5 PRESIDENTES-145D-&#39; u&#39;5 PRESIDENTES-151--&#39; ...,
+ u&#39;ZAPOTALILLO-3--&#39; u&#39;ZAPOTALILLO-8--&#39; u&#39;ZAPOTALILLO-9--&#39;]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Lo anterior indica que existe información para 11 mil 646 pozos.</p>
+<p>Dado que este análisis toma en cuenta la serie de tiempo para cada pozo, es necesario asegurarse de que los datos están ordenados temporalmente. Por ello, como medida de precaución, se transformarán los campos que incluyen las fechas a un formato temporal. Hasta este punto, la información sobre el periodo de tiempo de cada pozo está almacenada como un conjunto de caracteres, por lo que si se pretende ordenar ésta de modo ascendente se obtendrá un orden alfabético y no temporal.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[35]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Ordenar el campo con periodos de modo ascendente.</span>
+<span class="n">data</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;periodo&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()[</span><span class="s2">&quot;periodo&quot;</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
 
 
-<div class="output_png output_subarea ">
-<img src="data:image/png;base64,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
-VKD/D4yrGLS0/1cbAAAAAElFTkSuQmCC
-"
->
+<div class="output_area"><div class="prompt output_prompt">Out[35]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0       2016-01-01 00:00:00
+4627    2016-01-01 00:00:00
+1       2016-01-01 00:00:00
+2       2016-01-01 00:00:00
+3       2016-01-01 00:00:00
+Name: periodo, dtype: object</pre>
 </div>
 
 </div>
 
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Para corregir lo anterior se cambiará el formato del campo con los periodos para que en el código su información sea interpretada como fechas y no como caracteres.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[34]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">periodos</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">periodo</span><span class="o">.</span><span class="n">values</span><span class="p">;</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">periodos</span><span class="p">)):</span>
+    <span class="n">periodos</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">periodos</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">);</span>
+    <span class="n">periodos</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">periodos</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="s2">&quot;%b-%y&quot;</span><span class="p">);</span>
+
+<span class="n">periodos</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span> <span class="s2">&quot;periodos&quot;</span><span class="p">:</span><span class="n">periodos</span><span class="p">[:]</span> <span class="p">})</span>
+<span class="n">data</span><span class="o">.</span><span class="n">periodos</span> <span class="o">=</span> <span class="n">periodos</span><span class="p">;</span>
+
+<span class="c1"># Ordenar por fecha</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;periodo&quot;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="c1">#a.plot.density(); plt.show()</span>
+</pre></div>
+
+</div>
 </div>
 </div>
 
