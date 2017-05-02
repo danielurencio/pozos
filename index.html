@@ -11775,7 +11775,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># xlsx2csv P*.xlsx &gt; pozos.csv    # Convertir a CSV.</span>
@@ -11811,7 +11811,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
@@ -11841,7 +11841,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1">## Crear DataFrame con los datos sobre pozos.</span>
@@ -11871,7 +11871,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -11885,7 +11885,7 @@ div#notebook {
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[4]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[6]:</div>
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 <div>
@@ -12012,7 +12012,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1">## Pozos (sin repetir valores) </span>
@@ -12055,7 +12055,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Ordenar el campo con periodos de modo ascendente.</span>
@@ -12070,7 +12070,7 @@ div#notebook {
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[6]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[8]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12100,7 +12100,7 @@ Name: periodo, dtype: object</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">periodos</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">periodo</span><span class="o">.</span><span class="n">values</span><span class="p">;</span>
@@ -12128,7 +12128,7 @@ Name: periodo, dtype: object</pre>
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[7]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[9]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12158,7 +12158,7 @@ Name: periodo, dtype: object</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">periodos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">periodo</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
@@ -12181,7 +12181,7 @@ Name: periodo, dtype: object</pre>
 </div>
 </div>
 
-<div class="output_area"><div class="prompt output_prompt">Out[8]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[10]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12220,7 +12220,7 @@ Name: periodo, dtype: object</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">NuevaTabla</span><span class="p">(</span><span class="n">archivo</span><span class="p">):</span>
@@ -12258,7 +12258,7 @@ Name: periodo, dtype: object</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Si no existe el archivo &#39;frecuencias.csv&#39; y es la primera vez que se ejecuta el script:</span>
@@ -12277,7 +12277,7 @@ Name: periodo, dtype: object</pre>
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[10]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[12]:</div>
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 <div>
@@ -12338,7 +12338,7 @@ Name: periodo, dtype: object</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Número inicial de pozos</span>
@@ -12373,7 +12373,7 @@ Porcentaje de pozos con 14 periodos: 62.8627855058 %
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">frecuencias</span><span class="p">[</span><span class="s2">&quot;observaciones&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">()</span>
@@ -12387,11 +12387,11 @@ Porcentaje de pozos con 14 periodos: 62.8627855058 %
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[12]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[14]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.axes.AxesSubplot at 0x7f87d9142b50&gt;</pre>
+<pre>&lt;matplotlib.axes.AxesSubplot at 0x7f2d1fcf1bd0&gt;</pre>
 </div>
 
 </div>
@@ -12714,7 +12714,7 @@ $$ \theta1 < 0 \rightarrow tendencia\ a\ la\ baja $$$$ \theta1 > 0 \rightarrow t
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="k">class</span> <span class="nc">Reg</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -12767,7 +12767,7 @@ $$ \theta1 < 0 \rightarrow tendencia\ a\ la\ baja $$$$ \theta1 > 0 \rightarrow t
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span>    <span class="k">def</span> <span class="nf">Parametros</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -12831,7 +12831,7 @@ $$ \hat{y_i} \equiv variable\ selecionada $$$$ x_i \equiv i_t \in [0,13] $$
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="k">print</span> <span class="s2">&quot;Primer pozo de la lista:&quot;</span><span class="p">,</span><span class="n">pozos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -12870,7 +12870,7 @@ $$ \hat{y_i} \equiv variable\ selecionada $$$$ x_i \equiv i_t \in [0,13] $$
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># La variable seleccionada es &#39;produccion_petroleo(mbd)&#39;, cuyo índice de columna es el número 7.</span>
@@ -12929,7 +12929,7 @@ Pendiente y coeficiente de determinación de Zapotalillo-9:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">presidentes_12</span><span class="o">.</span><span class="n">Graficar</span><span class="p">()</span>
@@ -13274,7 +13274,7 @@ SUVORK5CYII=
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="prompt input_prompt">In&nbsp;[20]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">zapotalillo_9</span><span class="o">.</span><span class="n">Graficar</span><span class="p">()</span>
@@ -13773,7 +13773,7 @@ IiIiIiIiIiIiIiIiIiIiUeD/AUR1WdD8JiDuAAAAAElFTkSuQmCC
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="prompt input_prompt">In&nbsp;[21]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">estimar_parametros</span><span class="p">(</span><span class="n">pozos</span><span class="p">,</span><span class="n">archivo</span><span class="p">):</span>
@@ -13800,7 +13800,7 @@ IiIiIiIiIiIiIiIiIiIiUeD/AUR1WdD8JiDuAAAAAElFTkSuQmCC
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[20]:</div>
+<div class="prompt input_prompt">In&nbsp;[22]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Si es la primera vez que se corre el código y no se cuenta con el archivo &#39;params.csv&#39;:</span>
@@ -13821,7 +13821,7 @@ IiIiIiIiIiIiIiIiIiIiUeD/AUR1WdD8JiDuAAAAAElFTkSuQmCC
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[20]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[22]:</div>
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 <div>
@@ -13893,7 +13893,7 @@ IiIiIiIiIiIiIiIiIiIiUeD/AUR1WdD8JiDuAAAAAElFTkSuQmCC
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[22]:</div>
+<div class="prompt input_prompt">In&nbsp;[24]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Aquellos pozos que tengan una R^2 mayor o igual a 0.6 y que tengan una pendiente positiva.</span>
@@ -13923,12 +13923,12 @@ IiIiIiIiIiIiIiIiIiIiUeD/AUR1WdD8JiDuAAAAAElFTkSuQmCC
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[22]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[24]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>array([[&lt;matplotlib.axes.AxesSubplot object at 0x7f87dc3fb990&gt;,
-        &lt;matplotlib.axes.AxesSubplot object at 0x7f87dc3b4150&gt;]], dtype=object)</pre>
+<pre>array([[&lt;matplotlib.axes.AxesSubplot object at 0x7f2d22d7c3d0&gt;,
+        &lt;matplotlib.axes.AxesSubplot object at 0x7f2d22d11150&gt;]], dtype=object)</pre>
 </div>
 
 </div>
@@ -15382,7 +15382,7 @@ hBBCCCGEEEIIIYQQQgghhBBCCCGEEEIIIYQQQgjRFP8fljWlr6GKhwoAAAAASUVORK5CYII=
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="prompt input_prompt">In&nbsp;[25]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="k">print</span> <span class="s2">&quot;Número de pozos seleccionados:&quot;</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">seleccion</span><span class="p">)</span>
@@ -15412,17 +15412,17 @@ hBBCCCGEEEIIIYQQQgghhBBCCCGEEEIIIYQQQgjRFP8fljWlr6GKhwoAAAAASUVORK5CYII=
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>A continuación se muestran algunos de los resultados ordenados, en orden descendiente, primero de acuerdo con su coeficiente de determinación y después por el valor de su pendiente.</p>
+<p>A continuación se muestran algunos de los resultados ordenados, en orden descendiente, primero de acuerdo por el valor de su pendiente y después por el valor de su coeficiente de determinación.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[24]:</div>
+<div class="prompt input_prompt">In&nbsp;[27]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="n">seleccion</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s1">&#39;slopes&#39;</span><span class="p">,</span><span class="s1">&#39;R2&#39;</span><span class="p">],</span> <span class="n">ascending</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">seleccion</span> <span class="o">=</span> <span class="n">seleccion</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s1">&#39;slopes&#39;</span><span class="p">,</span><span class="s1">&#39;R2&#39;</span><span class="p">],</span> <span class="n">ascending</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
 <span class="n">seleccion</span>
 </pre></div>
 
@@ -15434,7 +15434,7 @@ hBBCCCGEEEIIIYQQQgghhBBCCCGEEEIIIYQQQgjRFP8fljWlr6GKhwoAAAAASUVORK5CYII=
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[24]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[27]:</div>
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 <div>
@@ -15449,172 +15449,94 @@ hBBCCCGEEEIIIYQQQgghhBBCCCGEEEIIIYQQQgjRFP8fljWlr6GKhwoAAAAASUVORK5CYII=
   </thead>
   <tbody>
     <tr>
-      <th>29</th>
-      <td>0.612579</td>
-      <td>ABKATUN-216--</td>
-      <td>0.031276</td>
+      <th>7274</th>
+      <td>0.610944</td>
+      <td>ZAAP-2--</td>
+      <td>0.520009</td>
     </tr>
     <tr>
-      <th>33</th>
-      <td>0.760711</td>
-      <td>ABKATUN-37--</td>
-      <td>0.089300</td>
+      <th>7235</th>
+      <td>0.865349</td>
+      <td>XANAB-52--</td>
+      <td>0.460291</td>
     </tr>
     <tr>
-      <th>43</th>
-      <td>0.740885</td>
-      <td>ACUATEMPA-27--</td>
-      <td>0.004774</td>
+      <th>7267</th>
+      <td>0.841306</td>
+      <td>ZAAP-126--</td>
+      <td>0.455553</td>
     </tr>
     <tr>
-      <th>44</th>
-      <td>0.805117</td>
-      <td>ACUATEMPA-33--</td>
-      <td>0.001928</td>
+      <th>7263</th>
+      <td>0.791921</td>
+      <td>ZAAP-110D-</td>
+      <td>0.435273</td>
     </tr>
     <tr>
-      <th>49</th>
-      <td>0.776222</td>
-      <td>AGAVE-303--</td>
-      <td>0.006782</td>
+      <th>3997</th>
+      <td>0.686679</td>
+      <td>KU-87--</td>
+      <td>0.348323</td>
     </tr>
     <tr>
-      <th>67</th>
-      <td>0.611986</td>
-      <td>AGUA FRIA-1355--</td>
-      <td>0.003670</td>
+      <th>7309</th>
+      <td>0.759676</td>
+      <td>ZAAP-95--</td>
+      <td>0.326552</td>
     </tr>
     <tr>
-      <th>95</th>
-      <td>0.818946</td>
-      <td>AGUA FRIA-3215--</td>
-      <td>0.000869</td>
+      <th>7287</th>
+      <td>0.678641</td>
+      <td>ZAAP-27--</td>
+      <td>0.315527</td>
     </tr>
     <tr>
-      <th>143</th>
-      <td>0.648932</td>
-      <td>AGUA FRIA-627--</td>
-      <td>0.001081</td>
+      <th>7268</th>
+      <td>0.628424</td>
+      <td>ZAAP-128--</td>
+      <td>0.274942</td>
     </tr>
     <tr>
-      <th>149</th>
-      <td>0.653631</td>
-      <td>AGUA FRIA-648--</td>
-      <td>0.001252</td>
+      <th>7303</th>
+      <td>0.815166</td>
+      <td>ZAAP-48--</td>
+      <td>0.265930</td>
     </tr>
     <tr>
-      <th>254</th>
-      <td>0.799111</td>
-      <td>AGUA NACIDA-72--</td>
-      <td>0.002908</td>
+      <th>4166</th>
+      <td>0.644997</td>
+      <td>MALOOB-467--</td>
+      <td>0.247382</td>
     </tr>
     <tr>
-      <th>272</th>
-      <td>0.882933</td>
-      <td>AGUACATE-54--</td>
-      <td>0.001955</td>
+      <th>7270</th>
+      <td>0.696360</td>
+      <td>ZAAP-15--</td>
+      <td>0.238966</td>
     </tr>
     <tr>
-      <th>274</th>
-      <td>0.935130</td>
-      <td>AGUACATE-60--</td>
-      <td>0.003046</td>
+      <th>3994</th>
+      <td>0.792049</td>
+      <td>KU-84--</td>
+      <td>0.226448</td>
     </tr>
     <tr>
-      <th>279</th>
-      <td>0.611356</td>
-      <td>AKAL-1005--</td>
-      <td>0.015750</td>
+      <th>7265</th>
+      <td>0.748298</td>
+      <td>ZAAP-118--</td>
+      <td>0.211032</td>
     </tr>
     <tr>
-      <th>286</th>
-      <td>0.794448</td>
-      <td>AKAL-1027D-</td>
-      <td>0.050771</td>
+      <th>7289</th>
+      <td>0.623116</td>
+      <td>ZAAP-28--</td>
+      <td>0.192402</td>
     </tr>
     <tr>
-      <th>311</th>
-      <td>0.662013</td>
-      <td>AKAL-245--</td>
-      <td>0.010505</td>
-    </tr>
-    <tr>
-      <th>312</th>
-      <td>0.676624</td>
-      <td>AKAL-247--</td>
-      <td>0.024442</td>
-    </tr>
-    <tr>
-      <th>316</th>
-      <td>0.611435</td>
-      <td>AKAL-3003D-</td>
-      <td>0.016789</td>
-    </tr>
-    <tr>
-      <th>352</th>
-      <td>0.600206</td>
-      <td>AKAL-471--</td>
-      <td>0.038412</td>
-    </tr>
-    <tr>
-      <th>361</th>
-      <td>0.775581</td>
-      <td>AKAL-93D-</td>
-      <td>0.016576</td>
-    </tr>
-    <tr>
-      <th>378</th>
-      <td>0.774803</td>
-      <td>ALAZAN-31--</td>
-      <td>0.000424</td>
-    </tr>
-    <tr>
-      <th>403</th>
-      <td>0.627315</td>
-      <td>ALTAMIRA-1029D-</td>
-      <td>0.001470</td>
-    </tr>
-    <tr>
-      <th>409</th>
-      <td>0.688968</td>
-      <td>ALTAMIRA-1051--</td>
-      <td>0.001624</td>
-    </tr>
-    <tr>
-      <th>421</th>
-      <td>0.607238</td>
-      <td>ANGOSTURA-17--</td>
-      <td>0.001920</td>
-    </tr>
-    <tr>
-      <th>757</th>
-      <td>0.731849</td>
-      <td>ARENQUE-24--</td>
-      <td>0.001675</td>
-    </tr>
-    <tr>
-      <th>759</th>
-      <td>0.703928</td>
-      <td>ARENQUE-31--</td>
-      <td>0.009203</td>
-    </tr>
-    <tr>
-      <th>766</th>
-      <td>0.693656</td>
-      <td>ARROYO PRIETO-11--</td>
-      <td>0.004637</td>
-    </tr>
-    <tr>
-      <th>772</th>
-      <td>0.669044</td>
-      <td>ARROYO PRIETO-2D-</td>
-      <td>0.026417</td>
-    </tr>
-    <tr>
-      <th>773</th>
-      <td>0.758800</td>
-      <td>ARTESA-352--</td>
-      <td>0.017080</td>
+      <th>4111</th>
+      <td>0.627985</td>
+      <td>MALOOB-339--</td>
+      <td>0.192345</td>
     </tr>
     <tr>
       <th>824</th>
@@ -15623,10 +15545,88 @@ hBBCCCGEEEIIIYQQQgghhBBCCCGEEEIIIYQQQgjRFP8fljWlr6GKhwoAAAAASUVORK5CYII=
       <td>0.172707</td>
     </tr>
     <tr>
-      <th>834</th>
-      <td>0.730642</td>
-      <td>BACAL-62--</td>
-      <td>0.004645</td>
+      <th>6047</th>
+      <td>0.602616</td>
+      <td>SIHIL-24--</td>
+      <td>0.165502</td>
+    </tr>
+    <tr>
+      <th>3973</th>
+      <td>0.603295</td>
+      <td>KU-128D-</td>
+      <td>0.158273</td>
+    </tr>
+    <tr>
+      <th>6037</th>
+      <td>0.835869</td>
+      <td>SIHIL-108--</td>
+      <td>0.145227</td>
+    </tr>
+    <tr>
+      <th>7276</th>
+      <td>0.716801</td>
+      <td>ZAAP-2031--</td>
+      <td>0.136200</td>
+    </tr>
+    <tr>
+      <th>6648</th>
+      <td>0.726366</td>
+      <td>TAKIN-22--</td>
+      <td>0.117247</td>
+    </tr>
+    <tr>
+      <th>7299</th>
+      <td>0.633912</td>
+      <td>ZAAP-4--</td>
+      <td>0.103986</td>
+    </tr>
+    <tr>
+      <th>3828</th>
+      <td>0.735453</td>
+      <td>IXTOC-19--</td>
+      <td>0.095774</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>0.760711</td>
+      <td>ABKATUN-37--</td>
+      <td>0.089300</td>
+    </tr>
+    <tr>
+      <th>4095</th>
+      <td>0.768054</td>
+      <td>LUM-1--</td>
+      <td>0.067197</td>
+    </tr>
+    <tr>
+      <th>5990</th>
+      <td>0.603573</td>
+      <td>SANTUARIO-403--</td>
+      <td>0.064504</td>
+    </tr>
+    <tr>
+      <th>4096</th>
+      <td>0.724220</td>
+      <td>LUM-2--</td>
+      <td>0.059810</td>
+    </tr>
+    <tr>
+      <th>3495</th>
+      <td>0.763357</td>
+      <td>GASIFERO-71--</td>
+      <td>0.056421</td>
+    </tr>
+    <tr>
+      <th>5921</th>
+      <td>0.829724</td>
+      <td>SAN RAMON-525--</td>
+      <td>0.055861</td>
+    </tr>
+    <tr>
+      <th>286</th>
+      <td>0.794448</td>
+      <td>AKAL-1027D-</td>
+      <td>0.050771</td>
     </tr>
     <tr>
       <th>...</th>
@@ -15635,22 +15635,130 @@ hBBCCCGEEEIIIYQQQgghhBBCCCGEEEIIIYQQQgjRFP8fljWlr6GKhwoAAAAASUVORK5CYII=
       <td>...</td>
     </tr>
     <tr>
-      <th>6807</th>
-      <td>0.637763</td>
-      <td>TEMAPACHE-201--</td>
-      <td>0.000354</td>
+      <th>5859</th>
+      <td>0.651483</td>
+      <td>SAN ANDRES-333--</td>
+      <td>0.000736</td>
     </tr>
     <tr>
-      <th>6809</th>
-      <td>0.625794</td>
-      <td>TEMAPACHE-205--</td>
-      <td>0.000773</td>
+      <th>6483</th>
+      <td>0.860195</td>
+      <td>SUR AMATLAN-8--</td>
+      <td>0.000718</td>
+    </tr>
+    <tr>
+      <th>1398</th>
+      <td>0.625271</td>
+      <td>COAPECHACA-505--</td>
+      <td>0.000663</td>
+    </tr>
+    <tr>
+      <th>3578</th>
+      <td>0.706940</td>
+      <td>HALLAZGO-64--</td>
+      <td>0.000634</td>
+    </tr>
+    <tr>
+      <th>3914</th>
+      <td>0.754688</td>
+      <td>JUAN FELIPE-150--</td>
+      <td>0.000626</td>
+    </tr>
+    <tr>
+      <th>6129</th>
+      <td>0.685387</td>
+      <td>SOLEDAD NORTE-267--</td>
+      <td>0.000623</td>
+    </tr>
+    <tr>
+      <th>3403</th>
+      <td>0.619241</td>
+      <td>FURBERO-2024--</td>
+      <td>0.000612</td>
+    </tr>
+    <tr>
+      <th>1632</th>
+      <td>0.657816</td>
+      <td>CONSTITUCIONES-202--</td>
+      <td>0.000563</td>
+    </tr>
+    <tr>
+      <th>4255</th>
+      <td>0.695398</td>
+      <td>MESA CERRADA-117--</td>
+      <td>0.000548</td>
+    </tr>
+    <tr>
+      <th>5934</th>
+      <td>0.610119</td>
+      <td>SAN RAMON-545--</td>
+      <td>0.000523</td>
+    </tr>
+    <tr>
+      <th>6495</th>
+      <td>0.882713</td>
+      <td>SUR CHINAMPA NORTE DE AMATLAN-450--</td>
+      <td>0.000515</td>
+    </tr>
+    <tr>
+      <th>5216</th>
+      <td>0.694126</td>
+      <td>POZA RICA-813--</td>
+      <td>0.000511</td>
     </tr>
     <tr>
       <th>6821</th>
       <td>0.623851</td>
       <td>TEPETATE NORTE CHINAMPA-5--</td>
       <td>0.000486</td>
+    </tr>
+    <tr>
+      <th>5852</th>
+      <td>0.638914</td>
+      <td>SAN ANDRES-297--</td>
+      <td>0.000483</td>
+    </tr>
+    <tr>
+      <th>3651</th>
+      <td>0.685363</td>
+      <td>HUMAPA-1296--</td>
+      <td>0.000473</td>
+    </tr>
+    <tr>
+      <th>1638</th>
+      <td>0.784579</td>
+      <td>CONSTITUCIONES-227--</td>
+      <td>0.000432</td>
+    </tr>
+    <tr>
+      <th>4422</th>
+      <td>0.796420</td>
+      <td>MORALILLO-207--</td>
+      <td>0.000431</td>
+    </tr>
+    <tr>
+      <th>378</th>
+      <td>0.774803</td>
+      <td>ALAZAN-31--</td>
+      <td>0.000424</td>
+    </tr>
+    <tr>
+      <th>3766</th>
+      <td>0.729581</td>
+      <td>HUMAPA-4544--</td>
+      <td>0.000369</td>
+    </tr>
+    <tr>
+      <th>6807</th>
+      <td>0.637763</td>
+      <td>TEMAPACHE-201--</td>
+      <td>0.000354</td>
+    </tr>
+    <tr>
+      <th>6478</th>
+      <td>0.777580</td>
+      <td>SUR AMATLAN-35--</td>
+      <td>0.000329</td>
     </tr>
     <tr>
       <th>6844</th>
@@ -15671,148 +15779,40 @@ hBBCCCGEEEIIIYQQQgghhBBCCCGEEEIIIYQQQgjRFP8fljWlr6GKhwoAAAAASUVORK5CYII=
       <td>0.000249</td>
     </tr>
     <tr>
-      <th>6952</th>
-      <td>0.716017</td>
-      <td>TOTECO-CERRO AZUL-403--</td>
-      <td>0.002589</td>
+      <th>1669</th>
+      <td>0.600910</td>
+      <td>CONSTITUCIONES-408--</td>
+      <td>0.000222</td>
     </tr>
     <tr>
-      <th>6958</th>
-      <td>0.862661</td>
-      <td>TOTECO-CERRO AZUL-56--</td>
-      <td>0.002145</td>
+      <th>4991</th>
+      <td>0.622518</td>
+      <td>PANUCO-1006--</td>
+      <td>0.000171</td>
     </tr>
     <tr>
-      <th>6976</th>
-      <td>0.909868</td>
-      <td>TRES HERMANOS-137--</td>
-      <td>0.001269</td>
+      <th>6285</th>
+      <td>0.637969</td>
+      <td>SOLIS-133--</td>
+      <td>0.000045</td>
     </tr>
     <tr>
-      <th>6983</th>
-      <td>0.900183</td>
-      <td>TRES HERMANOS-164--</td>
-      <td>0.001149</td>
+      <th>1744</th>
+      <td>0.616498</td>
+      <td>CORCOVADO-7--</td>
+      <td>0.000037</td>
     </tr>
     <tr>
-      <th>6986</th>
-      <td>0.785144</td>
-      <td>TRES HERMANOS-183--</td>
-      <td>0.001541</td>
+      <th>6286</th>
+      <td>0.713261</td>
+      <td>SOLIS-137--</td>
+      <td>0.000031</td>
     </tr>
     <tr>
-      <th>6989</th>
-      <td>0.788237</td>
-      <td>TRES HERMANOS-187--</td>
-      <td>0.001622</td>
-    </tr>
-    <tr>
-      <th>7000</th>
-      <td>0.797330</td>
-      <td>TRES HERMANOS-248--</td>
-      <td>0.001374</td>
-    </tr>
-    <tr>
-      <th>7028</th>
-      <td>0.780929</td>
-      <td>TUPILCO-150--</td>
-      <td>0.008948</td>
-    </tr>
-    <tr>
-      <th>7033</th>
-      <td>0.637028</td>
-      <td>TUPILCO-208T-</td>
-      <td>0.009907</td>
-    </tr>
-    <tr>
-      <th>7235</th>
-      <td>0.865349</td>
-      <td>XANAB-52--</td>
-      <td>0.460291</td>
-    </tr>
-    <tr>
-      <th>7236</th>
-      <td>0.741328</td>
-      <td>XOCOTLA-117--</td>
-      <td>0.005015</td>
-    </tr>
-    <tr>
-      <th>7263</th>
-      <td>0.791921</td>
-      <td>ZAAP-110D-</td>
-      <td>0.435273</td>
-    </tr>
-    <tr>
-      <th>7265</th>
-      <td>0.748298</td>
-      <td>ZAAP-118--</td>
-      <td>0.211032</td>
-    </tr>
-    <tr>
-      <th>7267</th>
-      <td>0.841306</td>
-      <td>ZAAP-126--</td>
-      <td>0.455553</td>
-    </tr>
-    <tr>
-      <th>7268</th>
-      <td>0.628424</td>
-      <td>ZAAP-128--</td>
-      <td>0.274942</td>
-    </tr>
-    <tr>
-      <th>7270</th>
-      <td>0.696360</td>
-      <td>ZAAP-15--</td>
-      <td>0.238966</td>
-    </tr>
-    <tr>
-      <th>7274</th>
-      <td>0.610944</td>
-      <td>ZAAP-2--</td>
-      <td>0.520009</td>
-    </tr>
-    <tr>
-      <th>7276</th>
-      <td>0.716801</td>
-      <td>ZAAP-2031--</td>
-      <td>0.136200</td>
-    </tr>
-    <tr>
-      <th>7287</th>
-      <td>0.678641</td>
-      <td>ZAAP-27--</td>
-      <td>0.315527</td>
-    </tr>
-    <tr>
-      <th>7289</th>
-      <td>0.623116</td>
-      <td>ZAAP-28--</td>
-      <td>0.192402</td>
-    </tr>
-    <tr>
-      <th>7299</th>
-      <td>0.633912</td>
-      <td>ZAAP-4--</td>
-      <td>0.103986</td>
-    </tr>
-    <tr>
-      <th>7303</th>
-      <td>0.815166</td>
-      <td>ZAAP-48--</td>
-      <td>0.265930</td>
-    </tr>
-    <tr>
-      <th>7309</th>
-      <td>0.759676</td>
-      <td>ZAAP-95--</td>
-      <td>0.326552</td>
-    </tr>
-    <tr>
-      <th>7310</th>
-      <td>0.652157</td>
-      <td>ZACAMIXTLE-27--</td>
-      <td>0.002012</td>
+      <th>6278</th>
+      <td>0.713262</td>
+      <td>SOLIS-104--</td>
+      <td>0.000031</td>
     </tr>
   </tbody>
 </table>
@@ -15838,7 +15838,7 @@ hBBCCCGEEEIIIYQQQgghhBBCCCGEEEIIIYQQQgjRFP8fljWlr6GKhwoAAAAASUVORK5CYII=
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[25]:</div>
+<div class="prompt input_prompt">In&nbsp;[28]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">seleccion</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">7274</span><span class="p">]]</span>
@@ -15852,7 +15852,7 @@ hBBCCCGEEEIIIYQQQgghhBBCCCGEEEIIIYQQQgjRFP8fljWlr6GKhwoAAAAASUVORK5CYII=
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[25]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[28]:</div>
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 <div>
@@ -15885,7 +15885,7 @@ hBBCCCGEEEIIIYQQQgghhBBCCCGEEEIIIYQQQgjRFP8fljWlr6GKhwoAAAAASUVORK5CYII=
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[26]:</div>
+<div class="prompt input_prompt">In&nbsp;[29]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">seleccion</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">7274</span><span class="p">]][</span><span class="s1">&#39;pozos&#39;</span><span class="p">]</span>
