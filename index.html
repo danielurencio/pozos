@@ -11755,12 +11755,11 @@ div#notebook {
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Pr&#225;ctica:-An&#225;lisis-de-datos-para-la-exploraci&#243;n-de-pozos">Pr&#225;ctica: An&#225;lisis de datos para la exploraci&#243;n de pozos<a class="anchor-link" href="#Pr&#225;ctica:-An&#225;lisis-de-datos-para-la-exploraci&#243;n-de-pozos">&#182;</a></h1><h2 id="Resumen">Resumen<a class="anchor-link" href="#Resumen">&#182;</a></h2><p>El objetivo de este ejercicio es, a través de un análisis de datos, determinar en qué pozos debe de enfocarse la atención para la extracción de petróleo.</p>
 <p>La metodología adoptada en este análisis consiste en analizar la serie de tiempo para cada uno de los pozos con datos para 14 meses. Es decir, sólo se tomará en cuenta aquellos pozos para los cuales existe información para el periodo comprendido entre enero de 2016 y febrero de 2017, ya que dicho rango es el máximo posible de acuerdo con la base de datos que fue proporcionada.</p>
-<p>Para cada uno de los pozos que cumplió con el criterio anterior se ajustó una regresión lineal cuya variable dependiente $y$ es la producción de petróleo, y la variable independiente $x$ es el índice del periodo observado. Debido a que se cuenta con 14 meses, el índice de cada periodo es un número entero entre 0 y 13 ( $x$ E [0,14]). Cada una de estas regresiones se ajustó para fines meramente descriptivos, pues su propósito es obtener una línea de tendencia durante los 14 periodos analizados. Para conocer si la tendencia es positiva o negativa se observó el valor de la pendiente resultante del cómputo de una función lineal a través del método de mínimos cuadrados ordinarios; para conocer si dicha tendencia, o comportamiento, ha sido estable a lo largo del periodo analizado se observó el coeficiente de determinación, o $R^2$ ($R^2$ e (0,1)).</p>
+<p>Para cada uno de los pozos que cumplió con el criterio anterior se ajustó una regresión lineal cuya variable dependiente $y$ es la producción de petróleo, y la variable independiente $x$ es el índice del periodo observado. Debido a que se cuenta con 14 meses, el índice de cada periodo es un número entero entre 0 y 13 ( $x \in [0,13]$ ). Cada una de estas regresiones se ajustó para fines meramente descriptivos, pues su propósito es obtener una línea de tendencia durante los 14 periodos analizados. Para conocer si la tendencia es positiva o negativa se observó el valor de la pendiente resultante del cómputo de una función lineal a través del método de mínimos cuadrados ordinarios; para conocer si dicha tendencia, o comportamiento, ha sido estable a lo largo del periodo analizado se observó el coeficiente de determinación, o $R^2$.</p>
 <p>Los pozos seleccionados fueron aquellos cuya línea de tendencia fue positiva y con una bondad de ajuste por arriba del 60 por ciento.</p>
 <h2 id="Introducci&#243;n">Introducci&#243;n<a class="anchor-link" href="#Introducci&#243;n">&#182;</a></h2><p>Esta práctica se desarrolló con el lenguaje de programación Python y este documento se hizo con una herramienta llamada Jupyter.</p>
 <p>Este trabajo está dividido en "n" secciones...</p>
 <p>Los archivos con los cuales se hizo este análisis se encuentran albergados en un repositorio público en Github. Éste puede descargarse accediendo a la siguiente liga: <a href="https://github.com/danielurencio/pozos">https://github.com/danielurencio/pozos</a>.</p>
-<p>$x = a + b*x$</p>
 
 </div>
 </div>
@@ -11778,7 +11777,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[44]:</div>
+<div class="prompt input_prompt">In&nbsp;[76]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># xlsx2csv P*.xlsx &gt; pozos.csv    # Convertir a CSV.</span>
@@ -11814,7 +11813,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[57]:</div>
+<div class="prompt input_prompt">In&nbsp;[77]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
@@ -12644,6 +12643,220 @@ TkSuQmCC
 <h3 id="Par&#225;metros-de-una-regresi&#243;n-lineal-simple-como-medida-de-tendencia">Par&#225;metros de una regresi&#243;n lineal simple como medida de tendencia<a class="anchor-link" href="#Par&#225;metros-de-una-regresi&#243;n-lineal-simple-como-medida-de-tendencia">&#182;</a></h3>
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>De manera descriptiva, pueden utilizarse algunos parámetros obtenidos a través del método de mínimos cuadrados ordinarios para obtener una medida de tendencia para una serie de tiempo. Convencionalmente, una regresión lineal, en su forma más simple, está dada por:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+$$\hat{y} = \theta_0 + \theta_1 \cdot x$$
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>En donde $\hat{y}$ es el valor estimado, o variable dependiente, $x$ es la variable independiente, y los parámetros $\theta_0$ y $\theta_1$ representan el intercepto y la pendiente de la función ajustada respectivamente.</p>
+<p>Asimismo, el coeficiente de determinación, o $R^2$, es una medida que ofrece información sobre la proporción de la varianza de la variable dependiente que es explicada por la variable independiente; dicho de otro modo, este coeficiente es una medida para evaluar la bondad del ajuste de una regresión lineal. Este coeficiente, para una ecuación con una sola regresora, puede obtenerse a través de elevar al cuadrado el coeficiente de correlación de Pearson.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+$$ \rho^2 = \left( \frac{cov(x,y)}{\sigma_x \cdot \sigma_y} \right) ^2\ = R^2 \in [0,1] $$
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Para obtener una medida descriptiva de tendencia para cada una de las series de tiempo de los pozos seleccionados se estimarán las pendientes y los coeficientes de determinación, $\theta_1$ y $R^2$.</p>
+<p>El signo del valor de la pendiente $\theta_1$ será interpretado como un indicador para determinar si la producción de un pozo se ha mantenido constante, si ha crecido, o si ha decrecido. Asimismo, el coeficiente de determinación $R^2$ se utilizará como una medida para conocer si el comportamiento de la tendencia es robusto; mientras más cercano a $0$ sea el valor del coeficiente menos robusta es la tendencia, y mientras más cercano a $1$ más estable es la tendencia.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+$$ \theta1 < 0 \rightarrow tendencia\ a\ la\ baja $$$$ \theta1 > 0 \rightarrow tendencia\ a\ la\ alza $$$$ R^2 \approx 0 \rightarrow tendencia\ inestable $$$$ R^2 \approx 1 \rightarrow tendencia\ estable $$
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="C&#243;digo-para-la-estimaci&#243;n-de-par&#225;metros">C&#243;digo para la estimaci&#243;n de par&#225;metros<a class="anchor-link" href="#C&#243;digo-para-la-estimaci&#243;n-de-par&#225;metros">&#182;</a></h3><p>Para hacer estas estimaciones en <em>Python</em> se ha optado por declarar un objeto con métodos. Esto permite estimar los parámetros requeridos con pocas líneas de código. En otras palabras, para cada pozo se creará una instancia del objeto y cada instancia podrá ejecutar los métodos que estimarán $\theta_1$ y $R^2$ de la serie de tiempo que corresponden al pozo analizado. A continuación se presenta el código orientado a objetos y posteriormente se hará una descripción de cómo funcióna éste.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[78]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="k">class</span> <span class="nc">Reg</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">pozo</span><span class="p">,</span><span class="n">variable</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pozo</span> <span class="o">=</span> <span class="n">pozo</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">variable</span> <span class="o">=</span> <span class="n">variable</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">slope</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">intercept</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">R_2</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y_yat</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">def</span> <span class="nf">Parametros</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;pozo&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">pozo</span><span class="p">][[</span><span class="bp">self</span><span class="o">.</span><span class="n">variable</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span><span class="p">;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">();</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="p">[];</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">)):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">);</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">);</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">slope</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">intercept</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">R_2</span><span class="p">,</span><span class="n">p_value</span><span class="p">,</span><span class="n">std_err</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">linregress</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">);</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">R_2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">R_2</span><span class="o">**</span><span class="mi">2</span>
+
+    <span class="k">def</span> <span class="nf">Graficar</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y_hat</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">intercept</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">slope</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">y_hat</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>El código anterior permite declarar objetos los cuales cuentan con tres métodos, o funciones. El primer método permite recibir los parámetros <code>pozo</code> y <code>variable</code>, los cuales se refieren al nombre del pozo analizado y a la variable para la cual se estimarán $\theta_1$ y $R^2$ respectivamente; en este análisis sólo se considerará la variable <code>produccion_petroleo(mbd)</code> para la estimación de los parámetros para evaluar la tendencia, mismos que se calculan con el segundo método llamado <code>Parametros</code>. El tercer y último método, <code>Graficar</code>, visualiza los datos de la serie de tiempo para el pozo analizado y traza la línea de tendencia obtenida a traves del método de mínimos cuadrados ordinarios; para ello se utiliza la librería <em>scipy</em>.</p>
+<p>Para mayores detalles sobre cómo se calculan $\theta_1$ y $R^2$, considérense los siguientes comentarios para el método <code>Parametros</code>.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[81]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span>    <span class="k">def</span> <span class="nf">Parametros</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Se almacenan los datos de la variable seleccionada, para el pozo analizado,</span>
+        <span class="c1"># y se utilizan como la &quot;y&quot;, o variable dependiente, de la regresión.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;pozo&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">pozo</span><span class="p">][[</span><span class="bp">self</span><span class="o">.</span><span class="n">variable</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span><span class="p">;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">();</span>
+        <span class="c1"># Como variable independiente se utilizan los índices de los periodos existentes.</span>
+        <span class="c1"># Dado que se toman 14 periodos, el índice para el primer mes sería el 0, para el</span>
+        <span class="c1"># segundo mes sería el 1, para el tercero el 2, y así sucesivamente hasta llegar al 13.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="p">[];</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">)):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">);</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">);</span>
+        <span class="c1"># A través de la función &quot;stats.linregress&quot; de la librería &#39;scipy&#39; pueden obtenerse</span>
+        <span class="c1"># cinco parámetros de una regresión lineal simple: la pendiente, el intercepto, el</span>
+        <span class="c1"># coeficiente de Pearson, el &#39;p value&#39; y el error estándar.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">slope</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">intercept</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">R_2</span><span class="p">,</span><span class="n">p_value</span><span class="p">,</span><span class="n">std_err</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">linregress</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">);</span>
+        <span class="c1"># Para obtener el coeficiente de determinación, R^2, simplemente se eleva al cuadrado</span>
+        <span class="c1"># al coeficiente de Person obtenido en la función anterior.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">R_2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">R_2</span><span class="o">**</span><span class="mi">2</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>En resumen, el segundo método toma como variable dependiente a al parámetro que se le haya dado al objeto, además del nombre del pozo, y como variable independiente se toman los índices de cada uno de los periodos de la serie de tiempo.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+$$ \hat{y} \equiv variable\ selecionada $$$$ i_t \equiv índice \in [0,13] $$
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Para esclarecer lo anterior, a continuación se presenta un ejemplo.</p>
+<p>Con la variable <code>pozos</code>, que almacena el nombre de cada uno de los pozos puede</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[86]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="k">print</span> <span class="s2">&quot;Primer pozo de la lista:&quot;</span><span class="p">,</span><span class="n">pozos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="k">print</span> <span class="s2">&quot;Último pozo de la lista:&quot;</span><span class="p">,</span><span class="n">pozos</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">pozos</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Primer pozo de la lista: 5 PRESIDENTES-12--
+Último pozo de la lista: ZAPOTALILLO-9--
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">

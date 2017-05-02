@@ -51,7 +51,7 @@ def NuevaTabla(archivo):
 # pozos = pozos[pozos["observaciones"] == 14]
 # pozos = pozos.values[:,1].tolist()
 
-def Parametros(pozos,archivo):
+def estimar_parametros(pozos,archivo):
     tabla = []
     for i in range(len(pozos)):
         a = Reg(pozos[i],7)
