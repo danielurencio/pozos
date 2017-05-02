@@ -11778,7 +11778,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[28]:</div>
+<div class="prompt input_prompt">In&nbsp;[44]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># xlsx2csv P*.xlsx &gt; pozos.csv    # Convertir a CSV.</span>
@@ -11814,10 +11814,11 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[29]:</div>
+<div class="prompt input_prompt">In&nbsp;[57]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">division</span>
 <span class="kn">import</span> <span class="nn">pandas</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
@@ -11852,7 +11853,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[30]:</div>
+<div class="prompt input_prompt">In&nbsp;[58]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1">## Crear DataFrame con los datos sobre pozos.</span>
@@ -11882,7 +11883,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[31]:</div>
+<div class="prompt input_prompt">In&nbsp;[59]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -11896,7 +11897,7 @@ div#notebook {
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[31]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[59]:</div>
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 <div>
@@ -12013,7 +12014,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[32]:</div>
+<div class="prompt input_prompt">In&nbsp;[60]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1">## Pozos (sin repetir valores) </span>
@@ -12056,7 +12057,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[35]:</div>
+<div class="prompt input_prompt">In&nbsp;[61]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Ordenar el campo con periodos de modo ascendente.</span>
@@ -12071,15 +12072,15 @@ div#notebook {
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[35]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[61]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>0       2016-01-01 00:00:00
-4627    2016-01-01 00:00:00
-1       2016-01-01 00:00:00
-2       2016-01-01 00:00:00
-3       2016-01-01 00:00:00
+<pre>36820    Apr-16
+35396    Apr-16
+35397    Apr-16
+35398    Apr-16
+35399    Apr-16
 Name: periodo, dtype: object</pre>
 </div>
 
@@ -12101,36 +12102,536 @@ Name: periodo, dtype: object</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[34]:</div>
+<div class="prompt input_prompt">In&nbsp;[62]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">periodos</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">periodo</span><span class="o">.</span><span class="n">values</span><span class="p">;</span>
 
+<span class="c1"># Para cada periodo dar formato de fecha.</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">periodos</span><span class="p">)):</span>
     <span class="n">periodos</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">periodos</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">);</span>
     <span class="n">periodos</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">periodos</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="s2">&quot;%b-%y&quot;</span><span class="p">);</span>
 
+<span class="c1"># Agregar</span>
 <span class="n">periodos</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span> <span class="s2">&quot;periodos&quot;</span><span class="p">:</span><span class="n">periodos</span><span class="p">[:]</span> <span class="p">})</span>
 <span class="n">data</span><span class="o">.</span><span class="n">periodos</span> <span class="o">=</span> <span class="n">periodos</span><span class="p">;</span>
 
-<span class="c1"># Ordenar por fecha</span>
+<span class="c1"># Ordenar por fecha, ahora con el nuevo formato.</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;periodo&quot;</span><span class="p">)</span>
+<span class="c1"># Mostrar las primeras observaciones.</span>
+<span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">()[</span><span class="s2">&quot;periodo&quot;</span><span class="p">]</span>
 </pre></div>
 
 </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[62]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0       2016-01-01 00:00:00
+6166    2016-01-01 00:00:00
+6167    2016-01-01 00:00:00
+6168    2016-01-01 00:00:00
+6169    2016-01-01 00:00:00
+Name: periodo, dtype: object</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Anteriormente, el orden alfabético colocaba en el principio de la tabla a las observaciones del mes de abril de 2016. Una vez cambiado el formato las primeras observaciones son de enero de 2016, y las últimas son de febrero de 2017.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[63]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">periodos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">periodo</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+<span class="k">print</span> <span class="s2">&quot;Número de periodos:&quot;</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">periodos</span><span class="p">)</span>
+<span class="n">periodos</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Número de periodos: 14
+</pre>
+</div>
+</div>
+
+<div class="output_area"><div class="prompt output_prompt">Out[63]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([datetime.datetime(2016, 1, 1, 0, 0),
+       datetime.datetime(2016, 2, 1, 0, 0),
+       datetime.datetime(2016, 3, 1, 0, 0),
+       datetime.datetime(2016, 4, 1, 0, 0),
+       datetime.datetime(2016, 5, 1, 0, 0),
+       datetime.datetime(2016, 6, 1, 0, 0),
+       datetime.datetime(2016, 7, 1, 0, 0),
+       datetime.datetime(2016, 8, 1, 0, 0),
+       datetime.datetime(2016, 9, 1, 0, 0),
+       datetime.datetime(2016, 10, 1, 0, 0),
+       datetime.datetime(2016, 11, 1, 0, 0),
+       datetime.datetime(2016, 12, 1, 0, 0),
+       datetime.datetime(2017, 1, 1, 0, 0),
+       datetime.datetime(2017, 2, 1, 0, 0)], dtype=object)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Metodolog&#237;a">Metodolog&#237;a<a class="anchor-link" href="#Metodolog&#237;a">&#182;</a></h2><h3 id="Selecci&#243;n-de-observaciones-de-acuerdo-con-los-periodos-disponibles">Selecci&#243;n de observaciones de acuerdo con los periodos disponibles<a class="anchor-link" href="#Selecci&#243;n-de-observaciones-de-acuerdo-con-los-periodos-disponibles">&#182;</a></h3><p>Se seleccionarán sólo aquellos campos que cuentan con observaciones para el máximo periodo disponible en la base de datos original (son 14 meses de enero de 2016 a febrero de 2017). Para poder conocer qué campos cuentan con observaciones para 14 periodos se declarará una función que filtre, de la tabla original, el número de periodos disponible para cada pozo. Para ello resulta útil la variable llamada <code>pozos</code> declarada anteriormente, ésta almacena una lista con los nombres únicos de cada pozo.</p>
+<p>La nueva función que se declarará arroja una nueva tabla con dos columnas. En la primera se encuentran los nombres de cada pozo y en la segunda el número de periodos que existen para cada uno de éstos. La variable <code>pozos</code> resulta útil ya que es utilizada por la nueva función para iterar a lo largo de cada una de las observaciones dentro de la tabla original y así obtener el número de periodos que existen.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[64]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">NuevaTabla</span><span class="p">(</span><span class="n">archivo</span><span class="p">):</span>
+    <span class="n">nuevaTabla</span> <span class="o">=</span> <span class="p">[];</span>
+    <span class="k">print</span> <span class="s2">&quot;Computando...&quot;</span><span class="p">;</span>
+    <span class="c1"># Agregar nombre de pozos y periodos disponibles a una lista. La columna &#39;7&#39; es &#39;produccion_petroleo(mdb)&#39;</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">pozos</span><span class="p">)):</span>
+        <span class="n">nuevaTabla</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="p">[</span><span class="n">pozos</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="nb">len</span><span class="p">(</span> <span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;pozo&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">pozos</span><span class="p">[</span><span class="n">i</span><span class="p">]][[</span><span class="mi">7</span><span class="p">]]</span> <span class="p">)]</span> <span class="p">);</span>
+
+    <span class="c1"># Convertir a formato DataFrame.</span>
+    <span class="n">nuevaTabla</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">nuevaTabla</span><span class="p">);</span>
+    <span class="n">nuevaTabla</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span> <span class="s1">&#39;pozos&#39;</span><span class="p">:</span><span class="n">nuevaTabla</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;observaciones&#39;</span><span class="p">:</span><span class="n">nuevaTabla</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span> <span class="p">})</span>
+    <span class="k">print</span> <span class="s2">&quot;Se ha obtenido la nueva tabla..&quot;</span><span class="p">;</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">archivo</span><span class="p">):</span>
+        <span class="c1"># Si la variable &#39;archivo&#39; es igual a &#39;1&#39; o igual a &#39;True&#39; crear archivo &#39;frecuencias.csv&#39;.</span>
+        <span class="n">nuevaTabla</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;frecuencias.csv&quot;</span><span class="p">,</span><span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="bp">False</span><span class="p">);</span>
+        <span class="k">print</span> <span class="s2">&quot;Archivo con frecuencias guardado.&quot;</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">nuevaTabla</span><span class="p">;</span> <span class="c1"># Arrojar nueva tabla.</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Como puede notarse, la función anterior puede aceptar un parámetro. Si se otorga un parámetro, que recomendablemente debe de ser <code>1</code> ó <code>True</code>, la función creará un archivo delimitado por comas llamado <em>frecuencias.csv</em>. Esto es de utilidad ya que la iteración de la función puede tomar mucho tiempo, por lo que si quisiera reanudarse el código sin tener que ejecutar esta función simplemente puede cargarse el archivo creado a mediante la librería <em>pandas</em>.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[65]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Si no existe el archivo &#39;frecuencias.csv&#39; y es la primera vez que se ejecuta el script:</span>
+<span class="c1"># frecuencias = NuevaTabla(1);</span>
+
+<span class="c1"># Si ya existe el archivo se puede cargar con pandas:</span>
+<span class="n">frecuencias</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;frecuencias.csv&quot;</span><span class="p">);</span>
+<span class="n">frecuencias</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[65]:</div>
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>observaciones</th>
+      <th>pozos</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>14</td>
+      <td>5 PRESIDENTES-12--</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>6</td>
+      <td>5 PRESIDENTES-145D-</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1</td>
+      <td>5 PRESIDENTES-151--</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>5</td>
+      <td>5 PRESIDENTES-151D-</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>3</td>
+      <td>5 PRESIDENTES-160T-</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Al contar con el número de observaciones por pozo el siguiente paso es filtrar aquellos pozos que tengan 14 observaciones. La mayoría de los pozos cuenta con observaciones para el máximo periodo posible ya que más del 60 por ciento de los registros cumple con esta condición.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[74]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Número inicial de pozos</span>
+<span class="k">print</span> <span class="s2">&quot;Número total de pozos:&quot;</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">frecuencias</span><span class="p">)</span>
+
+<span class="c1"># Aplicar filtro</span>
+<span class="n">filtro</span> <span class="o">=</span> <span class="n">frecuencias</span><span class="p">[</span><span class="n">frecuencias</span><span class="p">[</span><span class="s1">&#39;observaciones&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">14</span><span class="p">]</span>
+<span class="k">print</span> <span class="s2">&quot;Número de pozos con 14 periodos:&quot;</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">filtro</span><span class="p">)</span>
+<span class="k">print</span> <span class="s2">&quot;Porcentaje de pozos con 14 periodos:&quot;</span><span class="p">,(</span><span class="nb">len</span><span class="p">(</span><span class="n">filtro</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">frecuencias</span><span class="p">))</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="s2">&quot;%&quot;</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Número total de pozos: 11646
+Número de pozos con 14 periodos: 7321
+Porcentaje de pozos con 14 periodos: 62.8627855058 %
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="prompt input_prompt">In&nbsp;[75]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="c1">#a.plot.density(); plt.show()</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">frecuencias</span><span class="p">[</span><span class="s2">&quot;observaciones&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">()</span>
 </pre></div>
 
 </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[75]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;matplotlib.axes.AxesSubplot at 0x7fd3a11a6bd0&gt;</pre>
+</div>
+
+</div>
+
+<div class="output_area"><div class="prompt"></div>
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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
+REREREREREREREREREREREREREREREREREREREREREREREREREREpP78f9VbTKvNF6+CAAAAAElF
+TkSuQmCC
+"
+>
+</div>
+
+</div>
+
 </div>
 </div>
 

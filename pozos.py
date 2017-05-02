@@ -51,7 +51,7 @@ def NuevaTabla(archivo):
 # pozos = pozos[pozos["observaciones"] == 14]
 # pozos = pozos.values[:,1].tolist()
 
-def Parametros(pozos):
+def Parametros(pozos,archivo):
     tabla = []
     for i in range(len(pozos)):
         a = Reg(pozos[i],7)
@@ -62,6 +62,9 @@ def Parametros(pozos):
 
     tabla = np.array(tabla);
     tabla = pandas.DataFrame({ 'pozos':tabla[:,0],'slopes':tabla[:,1],'R2':tabla[:,2] })
+    if(archivo):
+        tabla.to_csv("params.csv",encoding="utf-8",index=False);
+        print "Archivo con parámetros guardado.";
     return tabla;
 
 #a.plot.densitiy();
